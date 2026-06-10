@@ -1,0 +1,98 @@
+<style>
+        :root{
+--bg:#f6fbf6;
+--card:#ffffff;
+--muted:#6b8b6b;
+--accent:#9bd09b;
+--accent-dark:#78b178;
+--accent-soft:#eaf7ea;
+--text:#234023;
+--border:#e2efe2;
+--danger:#e05a5a;
+--shadow: 0 6px 18px rgba(34,64,35,0.06);
+--radius:10px;
+font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+margin:0;
+background: linear-gradient(180deg, var(--bg) 0%, #f1f9f1 100%);
+color:var(--text);
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+line-height:1.4;
+}
+
+/* Layout */
+.container{max-width:1180px;margin:0 auto;padding:0 18px}
+.site-header{
+background:linear-gradient(90deg,var(--accent-soft),transparent);
+border-bottom:1px solid var(--border);
+padding:18px 0;
+box-shadow:var(--shadow);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{
+display:inline-flex;
+width:54px;height:54px;border-radius:12px;
+background:linear-gradient(135deg,var(--accent-dark),var(--accent));
+color:#fff;font-weight:700;font-size:24px;
+align-items:center;justify-content:center;
+box-shadow:0 4px 12px rgba(120,177,120,0.18);
+}
+.site-title{margin:0;font-size:18px;color:var(--text)}
+.sub{margin:0;font-size:12px;color:var(--muted)}
+
+/* Buttons */
+.btn-primary, .logout-btn, .edit-btn, .delete-btn {
+display:inline-block;padding:8px 12px;border-radius:8px;border:0;
+text-decoration:none;color:#fff;background:var(--accent-dark);cursor:pointer;
+font-size:14px;
+}
+.logout-btn{background:transparent;color:var(--muted);border:1px solid var(--border);padding:8px 14px;border-radius:8px}
+.btn-primary{background:var(--accent-dark)}
+.edit-btn{background:#5aa25a;margin-right:6px;padding:6px 8px}
+.delete-btn{background:var(--danger);padding:6px 8px}
+
+/* Main layout */
+.wrapper{display:flex;gap:24px;padding:28px 0}
+.sidebar{
+width:220px;padding:18px;background:var(--card);border-radius:var(--radius);
+border:1px solid var(--border);box-shadow:var(--shadow);height:fit-content;
+}
+.sidebar a{display:block;padding:10px 12px;border-radius:8px;color:var(--muted);text-decoration:none;margin-bottom:6px}
+.sidebar a.active, .sidebar a:hover{background:var(--accent-soft);color:var(--accent-dark);font-weight:600}
+.content{flex:1}
+.card{background:var(--card);padding:18px;border-radius:var(--radius);margin-bottom:18px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.welcome-card .btn-primary{margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+table thead th{background:linear-gradient(180deg, #f7fbf7, #f2f8f2);text-align:left;padding:10px;border-bottom:1px solid var(--border);color:var(--muted);font-weight:600}
+table tbody td{padding:10px;border-bottom:1px dashed var(--border);vertical-align:middle}
+.data-table img, .orders-table img{border-radius:6px;display:block}
+.orders-table thead th{font-size:13px}
+.status-select{padding:6px 8px;border-radius:6px;border:1px solid #dfeede;background:#fbfffb;color:var(--text)}
+.status-btn{background:var(--accent);color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer}
+.assemble-btn{background:var(--accent-dark);color:#fff;border:0;padding:6px 10px;border-radius:6px}
+.site-footer{padding:20px 0;background:transparent;border-top:1px solid var(--border)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+
+/* Responsive */
+@media (max-width:900px){
+.wrapper{flex-direction:column}
+.sidebar{width:100%}
+.header-inner{flex-direction:column;gap:12px}
+table thead{display:none}
+table, table tbody, table tr, table td{display:block;width:100%}
+table tr{margin-bottom:12px;border-radius:10px;background:var(--card);padding:12px;border:1px solid var(--border)}
+table td{padding:6px 0}
+table td:before{content:attr(data-label);display:block;font-weight:600;color:var(--muted);margin-bottom:6px}
+}
+
+
+a{color:var(--accent-dark)}
+.edit-btn, .delete-btn, .status-btn, .assemble-btn{transition:transform .12s ease,box-shadow .12s ease}
+.edit-btn:hover,.delete-btn:hover,.status-btn:hover,.assemble-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(34,64,35,0.08)}
+    </style>

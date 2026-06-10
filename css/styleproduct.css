@@ -1,0 +1,76 @@
+/* css/styleproduct.css - Стиль страницы товара в едином стиле магазина */
+:root{
+  --bg:#faf9f7;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#2ecc71;
+  --accent-dark:#27b864;
+  --border:#e9e9e9;
+  --shadow: 0 10px 30px rgba(16,16,16,0.04);
+  --radius:12px;
+  --font-sans:"Inter", "Segoe UI", Roboto, Arial, sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  background:linear-gradient(180deg,var(--bg),#fff 60%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
+  font-size:16px;
+}
+
+/* Container reused from site */
+.container{width:calc(100% - 40px);max-width:1200px;margin:0 auto;padding:28px 0}
+
+/* Header minimal adjustments */
+.header{padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.03);background:transparent}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.header__brand{display:flex;align-items:center;gap:12px}
+.header__logo{width:44px;height:44px;border-radius:8px;object-fit:cover}
+.header__site-name{font-weight:700;color:#163a24}
+
+/* Notices */
+.notice{padding:12px;border-radius:10px;margin-bottom:12px}
+.notice.success{background:#e9f8f0;border:1px solid rgba(46,204,113,0.12);color:#115c38}
+
+/* Product page layout */
+.product-page{display:flex;gap:28px;align-items:flex-start;justify-content:space-between}
+.product-media{flex:0 0 48%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow)}
+.product-media__img{width:100%;height:520px;object-fit:cover;border-radius:8px;display:block}
+
+/* Product info */
+.product-info{flex:1;min-width:260px;background:transparent;padding:6px}
+.product-info h1{margin:0 0 8px;font-size:26px;color:#163a24}
+.product-info p{color:var(--muted);margin:8px 0 16px;white-space:pre-wrap}
+.pc-price{font-size:22px;color:var(--accent-dark);font-weight:800;margin:12px 0}
+.pc-actions{display:flex;gap:12px;align-items:center;margin-top:14px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;font-weight:700;text-decoration:none;border:0;cursor:pointer}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-outline{background:#fff;border:1px solid var(--border);color:#333}
+
+/* Cart count small badge */
+.cart-count{background:var(--accent-dark);color:#fff;border-radius:999px;padding:2px 7px;font-size:12px;vertical-align:super;margin-left:8px}
+
+/* Footer */
+.footer{padding:24px 0;text-align:center;color:var(--muted);font-size:14px;margin-top:26px}
+
+/* Responsive */
+@media (max-width:980px){
+  .product-page{flex-direction:column;gap:18px}
+  .product-media__img{height:420px}
+}
+@media (max-width:520px){
+  .container{width:calc(100% - 28px);padding:16px 0}
+  .product-media__img{height:320px}
+  .product-info h1{font-size:20px}
+  .pc-price{font-size:18px}
+  .product-info p{font-size:14px}
+  .btn{padding:10px 12px}
+}

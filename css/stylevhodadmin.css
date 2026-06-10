@@ -1,0 +1,123 @@
+/* --- 1. Базовые стили и сброс (Reset) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 2. Стили для всей страницы (Body) --- */
+body {
+    /* Используем тот же мягкий градиент, что и в админке */
+    background: linear-gradient(135deg, #fdf6f0 0%, #e9e5df 100%);
+    color: #333;
+    display: flex;
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    min-height: 100vh; /* Высота на весь экран */
+    padding: 20px;
+}
+
+/* --- 3. Стили для формы входа (login-container) --- */
+.login-container {
+    background-color: white;
+    padding: 45px; /* Внутренние отступы */
+    border-radius: 15px; /* Скругление углов */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Тень */
+    text-align: center; /* Центрирование содержимого */
+    width: 100%;
+    max-width: 400px; /* Максимальная ширина формы */
+}
+
+/* Заголовок формы */
+.login-container h1 {
+    color: #6a0dad; /* Фиолетовый акцент */
+    margin-bottom: 35px; /* Отступ снизу от заголовка */
+}
+
+/* Стили для полей ввода */
+.login-container input {
+    width: calc(100% - 22px); /* Ширина на всю форму минус отступы */
+    padding: 14px;
+    margin: 12px 0 22px; /* Отступы сверху/снизу */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none; /* Убираем синюю рамку при фокусе */
+    transition: border-color 0.3s; /* Плавное изменение цвета рамки */
+}
+
+.login-container input:focus {
+    border-color: #6a0dad; /* Меняем цвет рамки при фокусе на фиолетовый */
+}
+
+/* Стили для кнопки "Войти" */
+.login-container button {
+    width: calc(100% - 22px);
+    padding: 14px;
+    margin-bottom: 15px;
+    background-color: #6a0dad; /* Фиолетовый фон */
+    color: white !important;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s; /* Плавные эффекты */
+}
+
+.login-container button:hover {
+    background-color: #5a0c9f; /* Темнее при наведении */
+}
+
+.login-container button:active {
+    transform: translateY(2px); /* Эффект нажатия */
+    box-shadow: none;
+}
+
+/* Стиль для кнопки "Вернуться на сайт" (сделаем её менее заметной) */
+.button_index {
+     width: calc(100% - 22px);
+     padding: 12px;
+     margin-bottom: 25px;
+     background-color: transparent;
+     color: #6a0dad !important; /* Фиолетовый текст */
+     border: 2px solid #6a0dad;
+     border-radius: 8px;
+     font-size: 16px;
+     cursor: pointer;
+     transition: background-color 0.3s, color 0.3s;
+ }
+
+.button_index:hover {
+     background-color: #6a0dad; /* Фон становится фиолетовым */
+     color: white !important; /* Текст становится белым */
+ }
+
+/* --- 4. Стили для сообщений об ошибках --- */
+.error-message {
+    color: #dc3545; /* Красный цвет текста ошибки */
+    font-size: 14px;
+    margin-top: -15px; /* Подтягиваем вверх к кнопке */
+    margin-bottom: 25px; /* Отступ снизу */
+}
+
+/* --- Адаптивность (для мобильных устройств) --- */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px; /* Уменьшаем отступы на маленьких экранах */
+        margin: 20px;
+    }
+
+    .login-container h1 {
+        font-size: 24px; /* Уменьшаем заголовок */
+        margin-bottom: 25px;
+    }
+
+    .login-container button,
+    .button_index {
+        font-size: 14px; /* Уменьшаем шрифт в кнопках */
+        padding: 10px;
+        min-height: auto; /* Убираем фиксированную высоту */
+    }
+}

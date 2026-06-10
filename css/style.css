@@ -1,0 +1,374 @@
+<style>
+      /* css/style.css
+   Цвета и типографика можно менять в :root */
+:root{
+  --bg:#faf9f7;
+  --card:#ffffff;
+  --muted:#6b6b6b;
+  --accent:#2ecc71; /* зелёный основной */
+  --accent-dark:#27b864;
+  --danger:#e74c3c;
+  --border:#e9e9e9;
+  --shadow: 0 6px 18px rgba(21,21,21,0.06);
+  --max-width:1200px;
+  --radius:10px;
+  --gap:20px;
+  --font-sans:"Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Подключение webfont (если хотите использовать локально, уберите) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:var(--font-sans);
+  background:linear-gradient(180deg,var(--bg),#fff 60%);
+  color:#222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-size:16px;
+}
+
+/* Контейнер */
+.container{
+  width:calc(100% - 40px);
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:28px 0;
+}
+
+/* Header */
+.header{
+  background:transparent;
+  padding:18px 0;
+  border-bottom:1px solid rgba(0,0,0,0.03);
+  position:sticky;
+  top:0;
+  z-index:30;
+  backdrop-filter: blur(6px);
+}
+.header__inner{
+  display:flex;
+  gap:20px;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+}
+.header__brand{display:flex;align-items:center;gap:12px}
+.header__logo{width:46px;height:46px;object-fit:cover;border-radius:8px;box-shadow:var(--shadow)}
+.header__site-name{font-weight:700;font-size:18px;color:#222}
+.header__nav{display:flex;gap:14px;align-items:center}
+.header__nav-link{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:600}
+.header__nav-link.active, .header__nav-link:hover{background:rgba(46,204,113,0.08);color:var(--accent-dark)}
+
+.header__contact{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.header__phone{display:flex;align-items:center;gap:8px;text-decoration:none;color:#222}
+.header__phone-icon{width:18px;height:18px;opacity:0.9}
+.header__work-hours{margin:0;font-size:12px;color:var(--muted)}
+
+/* Actions */
+.header__actions{display:flex;align-items:center;gap:12px}
+.header__search-form{display:flex;align-items:center;gap:8px;background:#fff;padding:6px;border-radius:8px;border:1px solid var(--border)}
+.header__search-input{border:0;outline:none;padding:8px 10px;width:220px;border-radius:6px;font-size:14px}
+.header__search-btn{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px;padding:6px}
+
+.header__quick-action{display:flex;align-items:center;gap:12px}
+.header__cart, .header__account{display:flex;align-items:center;gap:8px;text-decoration:none;color:#222;padding:6px 10px;border-radius:8px}
+.header__cart:hover, .header__account:hover{background:rgba(0,0,0,0.03)}
+.cart-count{background:var(--danger);color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;vertical-align:super;margin-left:6px}
+
+/* Banner */
+.site-banner{padding:28px 0;background:linear-gradient(90deg, rgba(46,204,113,0.08) 0%, rgba(46,204,113,0.04) 100%);border-radius:12px;margin:20px 0}
+.banner-inner{display:flex;align-items:center;justify-content:center;gap:20px;position:relative;padding:30px 10px}
+.banner-title{margin:0;font-size:28px;font-weight:700;color:#13512b}
+.banner-sub{margin:6px 0 0;color:var(--muted)}
+
+/* Main layout */
+.main{padding:6px 0 60px}
+.flex-between_catalog__content{display:flex;gap:var(--gap);align-items:flex-start;}
+
+/* Sidebar */
+.catalog__sidebar{width:260px;background:var(--card);border:1px solid var(--border);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+.catalog__sidebar h3{margin:0 0 12px;font-size:16px}
+.catalog__sidebar ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.catalog__sidebar a{color:#333;text-decoration:none;padding:8px 10px;border-radius:8px;display:block;font-weight:600}
+.catalog__sidebar a.active, .catalog__sidebar a:hover{background:linear-gradient(90deg, rgba(46,204,113,0.06), rgba(46,204,113,0.02));color:var(--accent-dark)}
+
+/* Product list */
+.product-list{flex:1}
+.section-title{margin:0 0 12px;font-size:20px;color:#0f5132}
+.catalog-controls{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.breadcrumbs{color:var(--muted);font-size:14px}
+.catalog-actions{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.search-inline{display:flex;gap:8px}
+.search-inline input[type="search"]{padding:8px 10px;border:1px solid var(--border);border-radius:8px}
+.search-inline button{padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;border:0;cursor:pointer}
+
+/* Sort */
+.sort-inline{display:flex;align-items:center;gap:8px}
+#sort-select{padding:8px;border-radius:8px;border:1px solid var(--border);background:#fff}
+
+/* Grid */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.product-card{
+  background:var(--card);
+  border-radius:12px;
+  border:1px solid var(--border);
+  padding:14px;
+  transition:transform .18s ease, box-shadow .18s ease;
+  box-shadow:0 6px 20px rgba(16,16,16,0.03);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(16,16,16,0.08)}
+.pc-image img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:10px}
+.pc-title{font-size:16px;margin:0 0 6px;color:#163a24;font-weight:700}
+.pc-meta{margin:0 0 10px;color:var(--muted);font-size:13px}
+.pc-price{font-size:18px;color:var(--accent-dark);font-weight:700;margin-bottom:10px}
+
+/* Actions */
+.pc-actions{display:flex;gap:8px;align-items:center}
+.btn{font-weight:600;border-radius:8px;padding:8px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-outline{background:#fff;border:1px solid var(--border);color:#333;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff;border:0}
+.btn-primary:hover{background:var(--accent-dark)}
+
+/* Empty state */
+.product-list > p{padding:20px;background:#fff;border-radius:8px;border:1px dashed var(--border);color:var(--muted)}
+
+/* WhatsApp FAB */
+.whatsapp-fab{
+  position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;padding:12px 14px;border-radius:999px;box-shadow:0 8px 26px rgba(37,211,102,0.18);text-decoration:none;font-size:20px;z-index:60
+}
+
+/* Footer */
+.footer{padding:26px 0;margin-top:40px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Responsive */
+@media (max-width:1024px){
+  .products-grid{grid-template-columns:repeat(3,1fr)}
+  .catalog__sidebar{width:220px}
+}
+@media (max-width:820px){
+  .flex-between_catalog__content{flex-direction:column-reverse}
+  .catalog__sidebar{order:2;width:100%}
+  .products-grid{grid-template-columns:repeat(2,1fr)}
+  .header__contact{display:none}
+  .header__search-input{width:140px}
+}
+@media (max-width:520px){
+  .products-grid{grid-template-columns:1fr}
+  .header__inner{flex-direction:column;align-items:flex-start;gap:12px}
+  .header__actions{width:100%;justify-content:space-between}
+  .header__search-input{width:100%}
+  .banner-title{font-size:20px}
+  .banner-inner{padding:18px}
+}
+
+/* Utility */
+.text-muted{color:var(--muted)}
+.small{font-size:13px}
+.kicker{font-size:12px;color:var(--muted);font-weight:600}
+/* About us */
+.about-us{margin:20px 0}
+.about-us .about-card{background:var(--card);border:1px solid var(--border);padding:18px;border-radius:12px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:center}
+.about-us .about-media{flex:0 0 160px}
+.about-us .about-media img{width:160px;height:120px;object-fit:cover;border-radius:8px}
+.about-us .about-body{flex:1}
+.about-us .about-title{margin:0 0 8px;font-size:20px;color:#13512b;font-weight:700}
+.about-us .about-text{margin:0 0 8px;color:var(--muted)}
+.about-us .about-features{margin:0;padding-left:18px;color:var(--muted)}
+.about-us .about-features li{margin-bottom:6px}
+.about-us .about-actions{flex:0 0 160px;text-align:right;display:flex;flex-direction:column;gap:8px}
+.about-us .about-actions .btn{width:100%}
+
+/* Responsive for About */
+@media (max-width:820px){
+.about-us .about-card{flex-direction:column;align-items:flex-start}
+.about-us .about-media{flex:0 0 auto}
+.about-us .about-actions{width:100%;text-align:left;flex-direction:row;gap:8px}
+.about-us .about-actions .btn{flex:1}
+}
+/* О нас (about-us) */
+.about-us {
+  margin: 20px 0;
+}
+
+.about-us .container {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(19, 81, 43, 0.06);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+/* Адаптивное поведение: стекать на маленьких экранах */
+@media (max-width: 720px) {
+  .about-us .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-us .container > div:first-child {
+    flex: 0 0 auto;
+  }
+}
+
+/* Изображение */
+.about-us img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+/* Текстовая часть */
+.about-us h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #13512b;
+  line-height: 1.2;
+}
+
+.about-us p {
+  margin: 0 0 8px;
+  color: #6b7a6b; /* muted */
+  font-size: 14px;
+}
+
+.about-us ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #6b7a6b;
+  font-size: 14px;
+}
+
+.about-us ul li {
+  margin-bottom: 6px;
+}
+
+.about-us ul li strong {
+  color: #2a6b3a;
+}
+
+/* Hover эффект */
+.about-us .container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(19, 81, 43, 0.08);
+}
+.footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #e4e7ea;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #666;
+  z-index: 999;
+}
+
+.footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+}
+
+
+
+    </style>
+
+
+    </style>
+    <header class="header">
+  <div class="container">
+     <div class="header__inner" style="display:flex;align-items:center;justify-content:space-between;padding:12px 0">
+  <div class="header__brand" style="display:flex;align-items:center;gap:10px">
+    <img src="icons/logo.png" alt="Логотип Флориста" class="header__logo" style="width:40px;height:40px">
+    <span class="header__site-name">Флорист</span>
+  </div>
+
+  <nav class="header__nav" style="flex:1;margin-left:24px">
+    <a href="index.php" class="header__nav-link active" style="margin-right:12px">Главная</a>
+    <a href="#about-us" class="header__nav-link">Доставка</a>
+    <a href="zakaz.php" class="header__nav-link" style="margin-right:12px">Заказы</a>
+    
+  </nav>
+<div class="header__contact">
+        <a href="tel:+79999999999" class="header__phone">
+          <img src="icons/telefon.png" alt="Телефон" class="header__phone-icon" height="50">
+          <span class="header__phone-number">+7 999 999 99 99</span>
+        </a>
+        <p class="header__work-hours">Ежедневно с 9:00 до 19:00</p>
+      </div>
+  <div style="display:flex;gap:12px;align-items:center">
+    <form class="header__search-form" method="GET" action="">
+      <input type="hidden" name="category" value="<?php echo e($currentCategory); ?>">
+      <input type="hidden" name="sort" value="<?php echo e($sort); ?>">
+      <input type="search" name="q" value="<?php echo e($q); ?>" placeholder="Поиск..." class="header__search-input" aria-label="Поиск" style="padding:6px 8px;border:1px solid #ccc;border-radius:6px">
+      <button type="submit" class="header__search-btn" style="margin-left:6px;padding:6px 8px"><i class="ri-search-line" aria-hidden="true"></i></button>
+    </form>
+
+    <div class="header__quick-action" style="display:flex;gap:12px;align-items:center;margin-left:12px">
+      <a href="cart.php" class="header__cart" aria-label="Корзина" style="text-decoration:none;color:inherit">
+        <i class="ri-shopping-basket-line" aria-hidden="true"></i>
+        <span>Корзина</span><sup class="cart-count"><?php echo $cartCount ?: ''; ?></sup>
+      </a>
+      <a href="vhod_admin.php" class="header__account" aria-label="Личный кабинет" style="text-decoration:none;color:inherit">
+        <i class="ri-user-fill" aria-hidden="true"></i>
+        <span>Личный кабинет</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+   </div>
+</header>
+<div class="container">
+  <?php if (!empty($_SESSION['flash_error'])): ?>
+    <div class="flash flash-error" role="alert"><?php echo e($_SESSION['flash_error']); unset($_SESSION['flash_error']); ?></div>
+  <?php endif; ?>
+
+  <?php if (!empty($_SESSION['flash_success'])): ?>
+    <div class="flash flash-success" role="status"><?php echo e($_SESSION['flash_success']); unset($_SESSION['flash_success']); ?></div>
+  <?php endif; ?>
+</div>
+
+<section class="site-banner">
+  <div class="container" style="padding:18px 0;text-align:center"  id="about-us">
+      <h1>Каталог цветов</h1>
+      <p>Свежие букеты и авторские композиции каждый день</p>
+  </div>
+</section>
+<section class="about-us" style="margin:20px 0;" >
+  <div class="container" style="background:var(--card);border:1px solid var(--border);padding:18px;border-radius:12px;display:flex;gap:18px;align-items:center;">
+    <div style="flex:0 0 160px;">
+      <img src="icons/florist.jpg" alt="О нас" style="width:160px;height:120px;object-fit:cover;border-radius:8px;">
+    </div>
+    <div style="flex:1;">
+      <h2 style="margin:0 0 8px;font-size:20px;color:#13512b;">О нас</h2>
+      <p style="margin:0 0 8px;color:var(--muted);">
+        Наша команда — профессиональные флористы с многолетним опытом. Мы создаём свежие букеты и авторские композиции из отборных цветов, доставляем по городу и помогаем подобрать подарок под любой повод.
+      </p>
+      <ul style="margin:0;padding-left:18px;color:var(--muted);">
+        <li><strong>Свежесть:</strong> ежедневная поставка цветов</li>
+        <li><strong>Гарантия:</strong> аккуратная упаковка и качество</li>
+        <li><strong>Доставка:</strong> Удобные временные слоты (с 9:00 до 21:00), срочная доставка за 2 часа*. Возможна доставка в ночное время по предварительному согласованию.<br>- Стандартная доставка — 300₽.<br>- Срочная доставка (до 2 часа) — 500₽.<br>- Ночная доставка (после 21:00) — 500₽ (по согласованию).<br>- За город — от 500₽ (рассчитывается индивидуально).</li>
+      </ul>
+    </div>
+  </div>
+</section>
